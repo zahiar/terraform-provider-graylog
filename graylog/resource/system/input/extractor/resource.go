@@ -2,7 +2,8 @@ package extractor
 
 import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
-	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/util"
+
+	"github.com/zahiar/terraform-provider-graylog/graylog/util"
 )
 
 func Resource() *schema.Resource {

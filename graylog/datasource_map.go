@@ -2,10 +2,11 @@ package graylog
 
 import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
-	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/datasource/dashboard"
-	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/datasource/sidecar"
-	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/datasource/stream"
-	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/datasource/system/indices/indexset"
+
+	"github.com/zahiar/terraform-provider-graylog/graylog/datasource/dashboard"
+	"github.com/zahiar/terraform-provider-graylog/graylog/datasource/sidecar"
+	"github.com/zahiar/terraform-provider-graylog/graylog/datasource/stream"
+	"github.com/zahiar/terraform-provider-graylog/graylog/datasource/system/indices/indexset"
 )
 
 var dataSourcesMap = map[string]*schema.Resource{

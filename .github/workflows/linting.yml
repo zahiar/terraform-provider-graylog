@@ -1,0 +1,19 @@
+name: "Linting"
+
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  golangci:
+    name: Linter
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-go@v3
+        with:
+          go-version: 1.17
+
+
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v3.1.0
