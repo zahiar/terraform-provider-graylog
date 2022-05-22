@@ -2,9 +2,10 @@ package stream
 
 import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
-	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/convert"
-	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/resource/stream"
-	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/util"
+
+	"github.com/zahiar/terraform-provider-graylog/graylog/convert"
+	"github.com/zahiar/terraform-provider-graylog/graylog/resource/stream"
+	"github.com/zahiar/terraform-provider-graylog/graylog/util"
 )
 
 func setDataToResourceData(d *schema.ResourceData, data map[string]interface{}) error {
