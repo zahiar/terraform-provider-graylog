@@ -28,6 +28,3 @@ jobs:
 
       - name: Run acceptance tests
         run: make testacc
-        env:
-          BITBUCKET_USERNAME: ${{ secrets.BITBUCKET_USERNAME }}
-          BITBUCKET_PASSWORD: ${{ secrets.BITBUCKET_PASSWORD }}
