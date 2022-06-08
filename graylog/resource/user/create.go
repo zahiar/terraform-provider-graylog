@@ -15,6 +15,9 @@ func create(d *schema.ResourceData, m interface{}) error {
 		return err
 	}
 	data, err := getDataFromResourceData(d)
+	if cl.APIVersion == "v4" {
+		delete(data, "full_name")
+	}
 	if err != nil {
 		return err
 	}
@@ -22,9 +25,20 @@ func create(d *schema.ResourceData, m interface{}) error {
 		data[keyPermissions] = []string{}
 	}
 
-	if _, err := cl.User.Create(ctx, data); err != nil {
+	_, err = cl.User.Create(ctx, data)
+	if err != nil {
 		return err
 	}
-	d.SetId(data[keyUsername].(string))
+	if cl.APIVersion == "v4" {
+		new_data, _, _ := cl.User.Get(ctx, data[keyUsername].(string), "v3")
+		d.Set("full_name", new_data["full_name"])
+		d.Set("external", new_data["external"])
+		d.Set("permissions", new_data["permissions"])
+		d.Set("read_only", new_data["read_only"])
+		d.Set("session_active", new_data["session_active"])
+		d.SetId(new_data["id"].(string))
+	} else {
+		d.SetId(data[keyUsername].(string))
+	}
 	return nil
 }

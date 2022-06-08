@@ -14,7 +14,13 @@ func destroy(d *schema.ResourceData, m interface{}) error {
 	if err != nil {
 		return err
 	}
-	if _, err := cl.User.Delete(ctx, d.Id()); err != nil {
+	var deleted_id string
+	if cl.APIVersion == "v4" {
+		deleted_id = "id/" + d.Id()
+	} else {
+		deleted_id = d.Id()
+	}
+	if _, err := cl.User.Delete(ctx, deleted_id); err != nil {
 		return err
 	}
 	return nil

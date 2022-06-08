@@ -15,9 +15,9 @@ func read(d *schema.ResourceData, m interface{}) error {
 	if err != nil {
 		return err
 	}
-	data, resp, err := cl.User.Get(ctx, d.Id())
+	data, resp, err := cl.User.Get(ctx, d.Id(), cl.APIVersion)
 	if err != nil {
 		return util.HandleGetResourceError(d, resp, err)
 	}
-	return setDataToResourceData(d, data)
+	return setDataToResourceData(d, data, cl.APIVersion)
 }

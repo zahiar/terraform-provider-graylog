@@ -13,16 +13,22 @@ type Client struct {
 }
 
 func (cl Client) Get(
-	ctx context.Context, name string,
+	ctx context.Context, name string, api_version string,
 ) (map[string]interface{}, *http.Response, error) {
 	if name == "" {
 		return nil, nil, errors.New("username is required")
+	}
+	var path string
+	if api_version == "v4" {
+		path = "/users/id/" + name
+	} else {
+		path = "/users/" + name
 	}
 
 	body := map[string]interface{}{}
 	resp, err := cl.Client.Call(ctx, httpclient.CallParams{
 		Method:       "GET",
-		Path:         "/users/" + name,
+		Path:         path,
 		ResponseBody: &body,
 	})
 	return body, resp, err
@@ -48,7 +54,6 @@ func (cl Client) Update(ctx context.Context, name string, user interface{}) (*ht
 	if user == nil {
 		return nil, errors.New("request body is nil")
 	}
-
 	resp, err := cl.Client.Call(ctx, httpclient.CallParams{
 		Method:      "PUT",
 		Path:        "/users/" + name,

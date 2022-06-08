@@ -11,6 +11,8 @@ import (
 func update(d *schema.ResourceData, m interface{}) error {
 	ctx := context.Background()
 	cl, err := client.New(m)
+	var update_id string
+	var save_full_name interface{}
 	if err != nil {
 		return err
 	}
@@ -19,12 +21,23 @@ func update(d *schema.ResourceData, m interface{}) error {
 	if err != nil {
 		return err
 	}
+	if cl.APIVersion == "v4" {
+		save_full_name = data["full_name"]
+		delete(data, "full_name")
+		update_id = d.Id()
+	} else {
+		update_id = oldName.(string)
+	}
 	if _, ok := data[keyPermissions]; !ok {
 		data[keyPermissions] = []string{}
 	}
-	if _, err := cl.User.Update(ctx, oldName.(string), data); err != nil {
+	if _, err := cl.User.Update(ctx, update_id, data); err != nil {
 		return err
 	}
-	d.SetId(newName.(string))
+	if cl.APIVersion == "v4" {
+		d.Set("full_name", save_full_name)
+	} else {
+		d.SetId(newName.(string))
+	}
 	return nil
 }
