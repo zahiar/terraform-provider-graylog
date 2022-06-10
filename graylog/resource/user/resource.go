@@ -39,6 +39,7 @@ func Resource() *schema.Resource {
 				Type:          schema.TypeString,
 				Optional:      true,
 				Required:      false,
+				Computed:      true,
 				ConflictsWith: []string{"first_name", "last_name"},
 			},
 			"first_name": {
