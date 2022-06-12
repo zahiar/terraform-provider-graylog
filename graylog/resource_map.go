@@ -28,6 +28,7 @@ import (
 	"github.com/zahiar/terraform-provider-graylog/graylog/resource/system/pipeline/pipeline"
 	"github.com/zahiar/terraform-provider-graylog/graylog/resource/system/pipeline/rule"
 	"github.com/zahiar/terraform-provider-graylog/graylog/resource/user"
+	userToken "github.com/zahiar/terraform-provider-graylog/graylog/resource/user/token"
 )
 
 var resourceMap = map[string]*schema.Resource{
@@ -56,6 +57,7 @@ var resourceMap = map[string]*schema.Resource{
 	"graylog_stream_output":              streamOutput.Resource(),
 	"graylog_stream_rule":                streamRule.Resource(),
 	"graylog_user":                       user.Resource(),
+	"graylog_user_token":                 userToken.Resource(),
 	// TODO support view
 	// "graylog_view":                       view.Resource(),
 }
