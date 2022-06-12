@@ -3,7 +3,7 @@ module github.com/zahiar/terraform-provider-graylog
 go 1.17
 
 require (
-	github.com/hashicorp/terraform-plugin-sdk/v2 v2.16.0
+	github.com/hashicorp/terraform-plugin-sdk/v2 v2.17.0
 	github.com/stretchr/testify v1.7.2
 	github.com/suzuki-shunsuke/flute/v2 v2.0.0
 	github.com/suzuki-shunsuke/go-dataeq v1.0.1
@@ -30,7 +30,7 @@ require (
 	github.com/hashicorp/hcl/v2 v2.12.0 // indirect
 	github.com/hashicorp/logutils v1.0.0 // indirect
 	github.com/hashicorp/terraform-exec v0.16.1 // indirect
-	github.com/hashicorp/terraform-json v0.13.0 // indirect
+	github.com/hashicorp/terraform-json v0.14.0 // indirect
 	github.com/hashicorp/terraform-plugin-go v0.9.1 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.4.0 // indirect
 	github.com/hashicorp/terraform-registry-address v0.0.0-20220510144317-d78f4a47ae27 // indirect
