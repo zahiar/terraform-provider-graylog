@@ -30,6 +30,7 @@ func create(d *schema.ResourceData, m interface{}) error {
 		return err
 	}
 	if cl.APIVersion == "v4" {
+		// Here we use v3 to retrieve the user information since the id is not returned by the API on creation
 		new_data, _, _ := cl.User.Get(ctx, data[keyUsername].(string), "v3")
 		d.Set("full_name", new_data["full_name"])
 		d.Set("external", new_data["external"])
