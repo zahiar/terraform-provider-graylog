@@ -22,7 +22,6 @@ func getDataFromResourceData(d *schema.ResourceData) (map[string]interface{}, er
 	if err != nil {
 		return nil, err
 	}
-
 	delete(data, keyClientAddress)
 	delete(data, keyExternal)
 	delete(data, keyLastActivity)
@@ -33,10 +32,14 @@ func getDataFromResourceData(d *schema.ResourceData) (map[string]interface{}, er
 	return data, nil
 }
 
-func setDataToResourceData(d *schema.ResourceData, data map[string]interface{}) error {
+func setDataToResourceData(d *schema.ResourceData, data map[string]interface{}, api_version string) error {
 	if err := convert.SetResourceData(d, Resource(), data); err != nil {
 		return err
 	}
-	d.SetId(data[keyUsername].(string))
+	if api_version == "v4" {
+		d.SetId(data["id"].(string))
+	} else {
+		d.SetId(data[keyUsername].(string))
+	}
 	return nil
 }
