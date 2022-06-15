@@ -26,6 +26,8 @@ func update(d *schema.ResourceData, m interface{}) error {
 		delete(data, "full_name")
 		update_id = d.Id()
 	} else {
+		delete(data, "first_name")
+		delete(data, "last_name")
 		update_id = oldName.(string)
 	}
 	if _, ok := data[keyPermissions]; !ok {

@@ -17,6 +17,9 @@ func create(d *schema.ResourceData, m interface{}) error {
 	data, err := getDataFromResourceData(d)
 	if cl.APIVersion == "v4" {
 		delete(data, "full_name")
+	} else {
+		delete(data, "first_name")
+		delete(data, "last_name")
 	}
 	if err != nil {
 		return err
