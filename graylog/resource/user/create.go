@@ -32,11 +32,26 @@ func create(d *schema.ResourceData, m interface{}) error {
 	if cl.APIVersion == "v4" {
 		// Here we use v3 to retrieve the user information since the id is not returned by the API on creation
 		new_data, _, _ := cl.User.Get(ctx, data[keyUsername].(string), "v3")
-		d.Set("full_name", new_data["full_name"])
-		d.Set("external", new_data["external"])
-		d.Set("permissions", new_data["permissions"])
-		d.Set("read_only", new_data["read_only"])
-		d.Set("session_active", new_data["session_active"])
+		err = d.Set("full_name", new_data["full_name"])
+		if err != nil {
+			return err
+		}
+		err = d.Set("external", new_data["external"])
+		if err != nil {
+			return err
+		}
+		err = d.Set("permissions", new_data["permissions"])
+		if err != nil {
+			return err
+		}
+		err = d.Set("read_only", new_data["read_only"])
+		if err != nil {
+			return err
+		}
+		err = d.Set("session_active", new_data["session_active"])
+		if err != nil {
+			return err
+		}
 		d.SetId(new_data["id"].(string))
 	} else {
 		d.SetId(data[keyUsername].(string))

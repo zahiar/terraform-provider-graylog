@@ -35,7 +35,10 @@ func update(d *schema.ResourceData, m interface{}) error {
 		return err
 	}
 	if cl.APIVersion == "v4" {
-		d.Set("full_name", save_full_name)
+		err = d.Set("full_name", save_full_name)
+		if err != nil {
+			return err
+		}
 	} else {
 		d.SetId(newName.(string))
 	}
