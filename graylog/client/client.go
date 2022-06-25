@@ -30,6 +30,7 @@ import (
 	"github.com/zahiar/terraform-provider-graylog/graylog/client/system/pipeline/pipeline"
 	"github.com/zahiar/terraform-provider-graylog/graylog/client/system/pipeline/rule"
 	"github.com/zahiar/terraform-provider-graylog/graylog/client/user"
+	userToken "github.com/zahiar/terraform-provider-graylog/graylog/client/user/token"
 	"github.com/zahiar/terraform-provider-graylog/graylog/client/view"
 	"github.com/zahiar/terraform-provider-graylog/graylog/config"
 )
@@ -62,6 +63,7 @@ type Client struct {
 	StreamRule              streamRule.Client
 	View                    view.Client
 	User                    user.Client
+	UserToken               userToken.Client
 }
 
 func New(m interface{}) (Client, error) {
@@ -157,6 +159,9 @@ func New(m interface{}) (Client, error) {
 			Client: httpClient,
 		},
 		User: user.Client{
+			Client: httpClient,
+		},
+		UserToken: userToken.Client{
 			Client: httpClient,
 		},
 	}, nil
