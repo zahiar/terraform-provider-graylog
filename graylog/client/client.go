@@ -31,12 +31,14 @@ import (
 	"github.com/zahiar/terraform-provider-graylog/graylog/client/system/pipeline/rule"
 	"github.com/zahiar/terraform-provider-graylog/graylog/client/user"
 	userToken "github.com/zahiar/terraform-provider-graylog/graylog/client/user/token"
+	authzSharesEntities "github.com/zahiar/terraform-provider-graylog/graylog/client/authz/shares/entities"
 	"github.com/zahiar/terraform-provider-graylog/graylog/client/view"
 	"github.com/zahiar/terraform-provider-graylog/graylog/config"
 )
 
 type Client struct {
 	APIVersion              string
+	AuthzSharesEntities			authzSharesEntities.Client
 	AlarmCallback           alarmcallback.Client
 	AlertCondition          condition.Client
 	Collector               collector.Client
@@ -162,6 +164,9 @@ func New(m interface{}) (Client, error) {
 			Client: httpClient,
 		},
 		UserToken: userToken.Client{
+			Client: httpClient,
+		},
+		AuthzSharesEntities: authzSharesEntities.Client{
 			Client: httpClient,
 		},
 	}, nil
