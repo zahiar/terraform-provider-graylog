@@ -1,6 +1,6 @@
 # Resource: graylog_grok_pattern
 
-* [Source Code](https://github.com/terraform-provider-graylog/terraform-provider-graylog/blob/master/graylog/resource/system/grok/resource.go)
+* [Source Code](https://github.com/zahiar/terraform-provider-graylog/blob/master/graylog/resource/system/grok/resource.go)
 
 ## Note
 
@@ -15,7 +15,7 @@ https://github.com/hashicorp/hcl2/blob/57bd5f374f26cdb7ae1b1c92fd6eb71335b9805b/
 
 ## Example Usage
 
-[Example](https://github.com/terraform-provider-graylog/terraform-provider-graylog/blob/master/examples/v0.12/grok_pattern.tf)
+[Example](https://github.com/zahiar/terraform-provider-graylog/blob/master/examples/v0.12/grok_pattern.tf)
 
 ```hcl
 resource "graylog_grok_pattern" "datestamp" {

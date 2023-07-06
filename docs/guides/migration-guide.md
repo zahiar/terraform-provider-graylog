@@ -100,4 +100,4 @@ The schema of Terraform State is also changed, but Terraform supports the state 
 https://www.terraform.io/docs/extend/resources/state-migration.html
 
 We implement `StateUpgrades`, so state is migrated automatically.
-If you encounter the trouble about state migration, please [create an issue](https://github.com/terraform-provider-graylog/terraform-provider-graylog/issues/new).
+If you encounter the trouble about state migration, please [create an issue](https://github.com/zahiar/terraform-provider-graylog/issues/new).
