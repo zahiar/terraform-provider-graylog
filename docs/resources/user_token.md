@@ -1,7 +1,7 @@
 # Resource: graylog_user_token
 
-* [Example](https://github.com/terraform-provider-graylog/terraform-provider-graylog/blob/master/examples/v0.12/user_token.tf)
-* [Source Code](https://github.com/terraform-provider-graylog/terraform-provider-graylog/blob/master/graylog/resource/user/token/resource.go)
+* [Example](https://github.com/zahiar/terraform-provider-graylog/blob/master/examples/v0.12/user_token.tf)
+* [Source Code](https://github.com/zahiar/terraform-provider-graylog/blob/master/graylog/resource/user/token/resource.go)
 
 ## Argument Reference
 

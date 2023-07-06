@@ -1,7 +1,7 @@
 # Resource: graylog_user
 
-* [Example](https://github.com/terraform-provider-graylog/terraform-provider-graylog/blob/master/examples/v0.12/user.tf)
-* [Source Code](https://github.com/terraform-provider-graylog/terraform-provider-graylog/blob/master/graylog/resource/user/resource.go)
+* [Example](https://github.com/zahiar/terraform-provider-graylog/blob/master/examples/v0.12/user.tf)
+* [Source Code](https://github.com/zahiar/terraform-provider-graylog/blob/master/graylog/resource/user/resource.go)
 
 Please use `"v4"` version of API when using a graylog version >=4.1.
 
@@ -34,8 +34,8 @@ Once the user is created, `password` is optional.
 
 ## Import
 
-`graylog_user` can be imported using the User `username`, e.g.
+`graylog_user` can be imported using the userId (can be obtained from System -> Users and Teams -> User Details), e.g.
 
 ```
-$ terraform import graylog_user.foo foo
+$ terraform import graylog_user.foo xxxxxxxxxxxxxxxx
 ```

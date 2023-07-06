@@ -1,7 +1,7 @@
 # Resource: graylog_sidecars
 
-* [Example](https://github.com/terraform-provider-graylog/terraform-provider-graylog/blob/master/examples/v0.12/sidecar.tf)
-* [Source Code](https://github.com/terraform-provider-graylog/terraform-provider-graylog/blob/master/graylog/resource/sidecar/resource.go)
+* [Example](https://github.com/zahiar/terraform-provider-graylog/blob/master/examples/v0.12/sidecar.tf)
+* [Source Code](https://github.com/zahiar/terraform-provider-graylog/blob/master/graylog/resource/sidecar/resource.go)
 
 Manages to assign Sidecars's configuration to Sidecars.
 Due to the Graylog API's restriction, we have to manage all assignments by one Terraform resource,
