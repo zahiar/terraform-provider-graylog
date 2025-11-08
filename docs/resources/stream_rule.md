@@ -1,7 +1,7 @@
 # Resource: graylog_stream_rule
 
-* [Example](https://github.com/terraform-provider-graylog/terraform-provider-graylog/blob/master/examples/v0.12/stream_rule.tf)
-* [Source Code](https://github.com/terraform-provider-graylog/terraform-provider-graylog/blob/master/graylog/resource/stream/rule/resource.go)
+* [Example](https://github.com/zahiar/terraform-provider-graylog/blob/master/examples/v0.12/stream_rule.tf)
+* [Source Code](https://github.com/zahiar/terraform-provider-graylog/blob/master/graylog/resource/stream/rule/resource.go)
 
 ## Argument Reference
 

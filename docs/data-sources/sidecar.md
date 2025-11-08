@@ -1,6 +1,6 @@
 # graylog_sidecar Data Source
 
-* [Source Code](https://github.com/terraform-provider-graylog/terraform-provider-graylog/blob/master/graylog/datasource/sidecar/data_source.go)
+* [Source Code](https://github.com/zahiar/terraform-provider-graylog/blob/master/graylog/datasource/sidecar/data_source.go)
 
 ## Example Usage
 
