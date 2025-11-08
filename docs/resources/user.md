@@ -12,7 +12,7 @@ Please use `"v4"` version of API when using a graylog version >=4.1.
 * `full_name` - (Required for v3) The data type is `string`. For v3 api only, incompatible with `first_name` and `last_name`.
 * `first_name` - (Required for v4) The data type is `string`. For v4 api only, incompatible with `full_name`.
 * `last_name` - (Required for v4) The data type is `string`. For v4 api only, incompatible with `full_name`.
-* `password` - (Optonal, Sensitive) The data type is `string`.
+* `password` - (Optional, Sensitive) The data type is `string`.
 * `roles` - (Optional) The data type is `set of string`.
 * `timezone` - (Optional, Computed) The data type is `string`.
 * `session_timeout_ms` - (Optional) The data type is `int`. The default value is `3600000`.
