@@ -3,13 +3,13 @@ package client
 import (
 	"net/http"
 
-	"github.com/suzuki-shunsuke/go-httpclient/httpclient"
-
+	authzSharesEntities "github.com/zahiar/terraform-provider-graylog/graylog/client/authz/shares/entities"
 	"github.com/zahiar/terraform-provider-graylog/graylog/client/dashboard"
 	"github.com/zahiar/terraform-provider-graylog/graylog/client/dashboard/position"
 	"github.com/zahiar/terraform-provider-graylog/graylog/client/dashboard/widget"
 	"github.com/zahiar/terraform-provider-graylog/graylog/client/event/definition"
 	"github.com/zahiar/terraform-provider-graylog/graylog/client/event/notification"
+	"github.com/zahiar/terraform-provider-graylog/graylog/client/httpclient"
 	"github.com/zahiar/terraform-provider-graylog/graylog/client/role"
 	"github.com/zahiar/terraform-provider-graylog/graylog/client/sidecar"
 	"github.com/zahiar/terraform-provider-graylog/graylog/client/sidecar/collector"
@@ -31,14 +31,13 @@ import (
 	"github.com/zahiar/terraform-provider-graylog/graylog/client/system/pipeline/rule"
 	"github.com/zahiar/terraform-provider-graylog/graylog/client/user"
 	userToken "github.com/zahiar/terraform-provider-graylog/graylog/client/user/token"
-	authzSharesEntities "github.com/zahiar/terraform-provider-graylog/graylog/client/authz/shares/entities"
 	"github.com/zahiar/terraform-provider-graylog/graylog/client/view"
 	"github.com/zahiar/terraform-provider-graylog/graylog/config"
 )
 
 type Client struct {
 	APIVersion              string
-	AuthzSharesEntities			authzSharesEntities.Client
+	AuthzSharesEntities     authzSharesEntities.Client
 	AlarmCallback           alarmcallback.Client
 	AlertCondition          condition.Client
 	Collector               collector.Client

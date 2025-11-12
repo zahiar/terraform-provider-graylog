@@ -5,7 +5,7 @@ import (
 	"errors"
 	"net/http"
 
-	"github.com/suzuki-shunsuke/go-httpclient/httpclient"
+	"github.com/zahiar/terraform-provider-graylog/graylog/client/httpclient"
 )
 
 type Client struct {
