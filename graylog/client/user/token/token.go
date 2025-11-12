@@ -18,7 +18,7 @@ func (cl Client) Get(
 ) (map[string]interface{}, *http.Response, error) {
 
 	if user_id == "" {
-		return nil, nil, fmt.Errorf("User id has to be filed")
+		return nil, nil, fmt.Errorf("user id has to be filed")
 	}
 	body := map[string][]map[string]interface{}{}
 	resp, err := cl.Client.Call(ctx, httpclient.CallParams{
@@ -36,7 +36,7 @@ func (cl Client) Get(
 		}
 	}
 	resp.StatusCode = http.StatusNotFound
-	return make(map[string]interface{}), resp, fmt.Errorf("No token found")
+	return make(map[string]interface{}), resp, fmt.Errorf("no token found")
 }
 
 func (cl Client) Create(ctx context.Context, token map[string]interface{}) (map[string]interface{}, *http.Response, error) {

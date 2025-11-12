@@ -9,7 +9,7 @@ import (
 	"github.com/zahiar/terraform-provider-graylog/graylog/util"
 )
 
-func read(d *schema.ResourceData, m interface{}) error {
+func Read(d *schema.ResourceData, m interface{}) error {
 	ctx := context.Background()
 	cl, err := client.New(m)
 	if err != nil {

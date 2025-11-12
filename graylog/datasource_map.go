@@ -7,6 +7,7 @@ import (
 	"github.com/zahiar/terraform-provider-graylog/graylog/datasource/sidecar"
 	"github.com/zahiar/terraform-provider-graylog/graylog/datasource/stream"
 	"github.com/zahiar/terraform-provider-graylog/graylog/datasource/system/indices/indexset"
+	"github.com/zahiar/terraform-provider-graylog/graylog/datasource/user"
 )
 
 var dataSourcesMap = map[string]*schema.Resource{
@@ -14,4 +15,5 @@ var dataSourcesMap = map[string]*schema.Resource{
 	"graylog_index_set": indexset.DataSource(),
 	"graylog_sidecar":   sidecar.DataSource(),
 	"graylog_stream":    stream.DataSource(),
+	"graylog_user":      user.DataSource(),
 }

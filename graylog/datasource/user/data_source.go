@@ -2,57 +2,44 @@ package user
 
 import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+	"github.com/zahiar/terraform-provider-graylog/graylog/resource/user"
 )
 
-func Resource() *schema.Resource {
+func DataSource() *schema.Resource {
 	return &schema.Resource{
-		Create: create,
-		Read:   Read,
-		Update: update,
-		Delete: destroy,
-
-		Importer: &schema.ResourceImporter{
-			StateContext: schema.ImportStatePassthroughContext,
+		Read: func(d *schema.ResourceData, m interface{}) error {
+			d.SetId(d.Get("username").(string))
+			return user.Read(d, m)
 		},
 
 		Schema: map[string]*schema.Schema{
+			"username": {
+				Type:     schema.TypeString,
+				Required: true,
+			},
+
 			"user_id": {
 				Type:     schema.TypeString,
 				Computed: true,
 			},
-			"username": {
-				Type:     schema.TypeString,
-				Required: true,
-				ForceNew: true,
-			},
-			// password is required to create but not required to update
-			"password": {
-				Type:      schema.TypeString,
-				Optional:  true,
-				Sensitive: true,
-			},
 			"email": {
 				Type:     schema.TypeString,
-				Required: true,
+				Computed: true,
 			},
 			"full_name": {
-				Type:          schema.TypeString,
-				Optional:      true,
-				Required:      false,
-				Computed:      true,
-				ConflictsWith: []string{"first_name", "last_name"},
+				Type:     schema.TypeString,
+				Optional: true,
+				Computed: true,
 			},
 			"first_name": {
-				Type:          schema.TypeString,
-				Optional:      true,
-				Required:      false,
-				ConflictsWith: []string{"full_name"},
+				Type:     schema.TypeString,
+				Optional: true,
+				Computed: true,
 			},
 			"last_name": {
-				Type:          schema.TypeString,
-				Optional:      true,
-				Required:      false,
-				ConflictsWith: []string{"full_name"},
+				Type:     schema.TypeString,
+				Optional: true,
+				Computed: true,
 			},
 			"permissions": {
 				Type:     schema.TypeSet,
@@ -60,29 +47,21 @@ func Resource() *schema.Resource {
 				Computed: true,
 				Elem:     &schema.Schema{Type: schema.TypeString},
 			},
-			// "preferences": {
-			//   "updateUnfocussed": false,
-			//   "enableSmartSearch": true
-			// }
 			"timezone": {
 				Type:     schema.TypeString,
-				Optional: true,
 				Computed: true,
 			},
 			"session_timeout_ms": {
 				Type:     schema.TypeInt,
-				Optional: true,
-				Default:  3600000, //nolint:gomnd
+				Computed: true,
 			},
 			"external": {
 				Type:     schema.TypeBool,
-				Optional: true,
 				Computed: true,
 			},
-			// startpage: null
 			"roles": {
 				Type:     schema.TypeSet,
-				Optional: true,
+				Computed: true,
 				Elem:     &schema.Schema{Type: schema.TypeString},
 			},
 			"read_only": {

@@ -14,7 +14,7 @@ const grn_base = "grn::::"
 func parseGrn(grn string) (string, string, error) {
 	parts := strings.SplitN(grn, ":", 6)
 	if len(parts) != 6 || parts[0] != "grn" || parts[4] == "" || parts[5] == "" {
-		return "", "", fmt.Errorf("Unexpected format of (%s), expected: grn::::type:id, got grn::::%s:%s", grn, parts[4], parts[5])
+		return "", "", fmt.Errorf("unexpected format of (%s), expected: grn::::type:id, got grn::::%s:%s", grn, parts[4], parts[5])
 	}
 	return parts[4], parts[5], nil
 }
