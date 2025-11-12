@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/suzuki-shunsuke/go-dataeq/dataeq"
+	"github.com/zahiar/terraform-provider-graylog/graylog/util/dataeq"
 )
 
 func OneSizeListToJSON(data map[string]interface{}, keys ...string) error {

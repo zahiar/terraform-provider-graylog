@@ -5,9 +5,8 @@ import (
 	"fmt"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
-	"github.com/suzuki-shunsuke/go-dataeq/dataeq"
-
 	"github.com/zahiar/terraform-provider-graylog/graylog/convert"
+	"github.com/zahiar/terraform-provider-graylog/graylog/util/dataeq"
 )
 
 const (
