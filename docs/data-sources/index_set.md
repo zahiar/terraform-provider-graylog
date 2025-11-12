@@ -1,4 +1,4 @@
-# graylog_index_set Data Source
+# Data Source: graylog_index_set
 
 * [Example](https://github.com/zahiar/terraform-provider-graylog/blob/master/examples/v0.12/index_set.tf)
 * [Source Code](https://github.com/zahiar/terraform-provider-graylog/blob/master/graylog/datasource/system/indices/indexset/data_source.go)

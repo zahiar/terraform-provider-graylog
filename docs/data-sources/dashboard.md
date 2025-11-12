@@ -1,6 +1,7 @@
-# graylog_dashboard Data Source
+# Data Source: graylog_dashboard
 
-* [Source Code](https://github.com/zahiar/terraform-provider-graylog/blob/master/graylog/datasource/dashboard/resource.go)
+* [Example](https://github.com/zahiar/terraform-provider-graylog/blob/master/examples/v0.12/dashboard.tf)
+* [Source Code](https://github.com/zahiar/terraform-provider-graylog/blob/master/graylog/datasource/dashboard/data_source.go)
 
 ## Example Usage
 

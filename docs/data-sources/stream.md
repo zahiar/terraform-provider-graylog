@@ -1,4 +1,4 @@
-# graylog_stream Data Source
+# Data Source: graylog_stream
 
 * [Example](https://github.com/zahiar/terraform-provider-graylog/blob/master/examples/v0.12/stream.tf)
 * [Source Code](https://github.com/zahiar/terraform-provider-graylog/blob/master/graylog/datasource/stream/data_source.go)
