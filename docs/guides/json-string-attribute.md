@@ -8,7 +8,7 @@ In this provider, the type of some attributes is not complex type but JSON strin
 
 e.g,
 
-```tf
+```hcl
   # graylog_extractor's extractor_config
   extractor_config = <<EOF
 {
@@ -25,7 +25,7 @@ EOF
 Or using [jsonencode](https://www.terraform.io/docs/configuration/functions/jsonencode.html)
 
 
-```tf
+```hcl
   extractor_config = jsonencode({
     list_separator             = ", "
     kv_separator               = "="

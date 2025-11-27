@@ -41,7 +41,7 @@ Reference
 
 AS IS
 
-```tf
+```hcl
 http_configuration {
   url = "https://example.com"
 }
@@ -49,7 +49,7 @@ http_configuration {
 
 TO BE
 
-```tf
+```hcl
 configuration = jsonencode({
   url = "https://example.com"
 })
@@ -59,13 +59,13 @@ configuration = jsonencode({
 
 AS IS
 
-```tf
+```hcl
 graylog_alarm_callback.foo.id
 ```
 
 TO BE
 
-```tf
+```hcl
 graylog_alarm_callback.foo.alarmcallback_id
 ```
 
@@ -87,7 +87,7 @@ Reference
 
 AS IS
 
-```tf
+```hcl
 field_content_value_parameters {
   field                = "message"
   value                = "hoge hoge"
@@ -100,7 +100,7 @@ field_content_value_parameters {
 
 TO BE
 
-```tf
+```hcl
 parameters = jsonencode({
   field                = "message"
   value                = "hoge hoge"
@@ -115,13 +115,13 @@ parameters = jsonencode({
 
 AS IS
 
-```tf
+```hcl
 graylog_alert_condition.foo.id
 ```
 
 TO BE
 
-```tf
+```hcl
 graylog_alert_condition.foo.alert_condition_id
 ```
 
@@ -143,7 +143,7 @@ Reference
 
 AS IS
 
-```tf
+```hcl
 quick_values_histogram_configuration {
   timerange {
     type = "relative"
@@ -160,7 +160,7 @@ quick_values_histogram_configuration {
 
 TO BE
 
-```tf
+```hcl
 config = jsonencode({
   timerange = {
     type = "relative"
@@ -179,13 +179,13 @@ config = jsonencode({
 
 AS IS
 
-```tf
+```hcl
 graylog_dashboard_widget.foo.id
 ```
 
 TO BE
 
-```tf
+```hcl
 graylog_dashboard_widget.foo.widget_id
 ```
 
@@ -196,7 +196,7 @@ graylog_dashboard_widget.foo.widget_id
 
 AS IS
 
-```tf
+```hcl
 positions {
   widget_id = graylog_dashboard_widget.test.id
   row       = 0
@@ -215,7 +215,7 @@ positions {
 
 TO BE
 
-```tf
+```hcl
 positions = jsonencode({
   "${graylog_dashboard_widget.test.widget_id}" = {
     row    = 0
@@ -250,7 +250,7 @@ positions = jsonencode({
 
 AS IS
 
-```tf
+```hcl
 json_type_extractor_config {
   list_separator             = ", "
   kv_separator               = "="
@@ -263,7 +263,7 @@ json_type_extractor_config {
 
 TO BE
 
-```tf
+```hcl
 extractor_config = jsonencode({
   list_separator             = ", "
   kv_separator               = "="
@@ -278,13 +278,13 @@ extractor_config = jsonencode({
 
 AS IS
 
-```tf
+```hcl
 graylog_extractor.foo.id
 ```
 
 TO BE
 
-```tf
+```hcl
 graylog_extractor.foo.extractor_id
 ```
 
@@ -296,7 +296,7 @@ graylog_extractor.foo.extractor_id
 
 AS IS
 
-```tf
+```hcl
 retention_strategy {
   max_number_of_indices = 20
   type                  = "org.graylog2.indexer.retention.strategies.DeletionRetentionStrategyConfig"
@@ -311,7 +311,7 @@ rotation_strategy {
 
 TO BE
 
-```tf
+```hcl
 retention_strategy = jsonencode({
   max_number_of_indices = 20
   type                  = "org.graylog2.indexer.retention.strategies.DeletionRetentionStrategyConfig"
@@ -331,7 +331,7 @@ rotation_strategy = jsonencode({
 
 AS IS
 
-```tf
+```hcl
 attributes {
   bind_address          = "0.0.0.0"
   port                  = 12201
@@ -342,7 +342,7 @@ attributes {
 
 TO BE
 
-```tf
+```hcl
 attributes = jsonencode({
   bind_address          = "0.0.0.0"
   port                  = 12201
@@ -357,12 +357,12 @@ attributes = jsonencode({
 
 AS IS
 
-```tf
+```hcl
 graylog_stream_rule.foo.id
 ```
 
 TO BE
 
-```tf
+```hcl
 graylog_stream_rule.foo.rule_id
 ```

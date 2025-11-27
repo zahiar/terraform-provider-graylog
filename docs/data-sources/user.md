@@ -1,24 +1,18 @@
 # Data Source: graylog_user
 
-* [Example](https://github.com/zahiar/terraform-provider-graylog/blob/master/examples/v0.12/user.tf)
-* [Source Code](https://github.com/zahiar/terraform-provider-graylog/blob/master/graylog/datasource/user/data_source.go)
-
 Please use `"v4"` version of API when using a graylog version >=4.1.
 
 ## Example Usage
-
-```tf
+```hcl
 data "graylog_user" "test" {
   username = "test"
 }
 ```
 
 ## Argument Reference
-
 * `username` - (Required) The data type is `string`.
 
 ## Attributes Reference
-
 * `email` - The data type is `string`.
 * `full_name` - The data type is `string`. For v3 api only.
 * `first_name` - The data type is `string`. For v4 api only.

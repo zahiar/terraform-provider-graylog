@@ -46,7 +46,7 @@ These attributes are unified to `configuration`.
 
 For example, at `go-graylog` AlarmCallback's `http_configuration` is the following structure.
 
-```tf
+```hcl
 http_configuration {
   url = "https://example.com"
 }
@@ -54,7 +54,7 @@ http_configuration {
 
 At this provider, this is changed to JSON string.
 
-```tf
+```hcl
 configuration = <<EOF
 {
   "url": "http://example.com"
@@ -64,7 +64,7 @@ EOF
 
 By [jsonencode](https://www.terraform.io/docs/configuration/functions/jsonencode.html), you can migrate more easily.
 
-```tf
+```hcl
 configuration = jsonencode({
   url = "https://example.com"
 })
@@ -85,11 +85,11 @@ In case of the following AlarmCallback,
 }
 ```
 
-provider | attribute | value
---- | ---- | ---
-go-graylog | id | `5ea2bc0a2ab79c001274e26f`
-terraform-provider-graylog | id | `5ea26bb42ab79c0012521287/5ea2bc0a2ab79c001274e26f`
-terraform-provider-graylog | alarmcallback_id | `5ea2bc0a2ab79c001274e26f`
+| provider                   | attribute        | value                                               |
+|----------------------------|------------------|-----------------------------------------------------|
+| go-graylog                 | id               | `5ea2bc0a2ab79c001274e26f`                          |
+| terraform-provider-graylog | id               | `5ea26bb42ab79c0012521287/5ea2bc0a2ab79c001274e26f` |
+| terraform-provider-graylog | alarmcallback_id | `5ea2bc0a2ab79c001274e26f`                          |
 
 So please fix `graylog_alarm_callback.<name>.id` to `graylog_alarm_callback.<name>.alarmcallback_id`.
 

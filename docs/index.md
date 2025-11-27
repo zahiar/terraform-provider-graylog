@@ -6,7 +6,7 @@ The Graylog provider is used to manage [Graylog](https://docs.graylog.org/)'s va
 
 ## Example Usage
 
-```tf
+```hcl
 # Configure Graylog Provider
 provider "graylog" {
   web_endpoint_uri = "http://example.com/api"

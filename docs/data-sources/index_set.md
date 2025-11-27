@@ -1,14 +1,26 @@
 # Data Source: graylog_index_set
 
-* [Example](https://github.com/zahiar/terraform-provider-graylog/blob/master/examples/v0.12/index_set.tf)
-* [Source Code](https://github.com/zahiar/terraform-provider-graylog/blob/master/graylog/datasource/system/indices/indexset/data_source.go)
+## Example Usage
+```hcl
+data "graylog_index_set" "test" {
+  index_set_id = "123"
+}
+```
+```hcl
+data "graylog_index_set" "test" {
+  title = "test"
+}
+```
+```hcl
+data "graylog_index_set" "test" {
+  index_prefix = "test_"
+}
+```
 
 ## Argument Reference
-
 One of `index_set_id` or `title` or `index_prefix` must be set.
 
 ## Attributes Reference
-
 * `title` - the title of the Index Set. The data type is `string`.
 * `index_prefix` - the index prefix of the Index Set. The data type is `string`.
 * `rotation_strategy_class` - the rotation strategy class of the Index Set. The data type is `string`.
