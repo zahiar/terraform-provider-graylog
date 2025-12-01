@@ -4,7 +4,7 @@ go 1.17
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.19.0
-	github.com/stretchr/testify v1.8.2
+	github.com/stretchr/testify v1.8.4
 	github.com/suzuki-shunsuke/flute/v2 v2.0.0
 )
 
