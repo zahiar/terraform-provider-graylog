@@ -1,7 +1,12 @@
 # Resource: graylog_dashboard
 
-* [Example](https://github.com/zahiar/terraform-provider-graylog/blob/master/examples/v0.12/dashboard.tf)
-* [Source Code](https://github.com/zahiar/terraform-provider-graylog/blob/master/graylog/resource/dashboard/resource.go)
+## Example Usage
+```hcl
+resource "graylog_dashboard" "test" {
+  title       = "test"
+  description = "test"
+}
+```
 
 ## Argument Reference
 

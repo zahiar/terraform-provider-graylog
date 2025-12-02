@@ -1,7 +1,14 @@
 # Resource: graylog_sidecar_collector
 
-* [Example](https://github.com/zahiar/terraform-provider-graylog/blob/master/examples/v0.12/sidecar_collector.tf)
-* [Source Code](https://github.com/zahiar/terraform-provider-graylog/blob/master/graylog/resource/sidecar/collector/resource.go)
+## Example Usage
+```hcl
+resource "graylog_sidecar_collector" "test" {
+  name                  = "foo"
+  service_type          = "exec"
+  node_operating_system = "linux"
+  executable_path       = "/usr/share/filebeat/bin/filebeat"
+}
+```
 
 ## Argument Reference
 

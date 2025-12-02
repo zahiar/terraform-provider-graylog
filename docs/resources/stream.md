@@ -1,7 +1,15 @@
 # Resource: graylog_stream
 
-* [Example](https://github.com/zahiar/terraform-provider-graylog/blob/master/examples/v0.12/stream.tf)
-* [Source Code](https://github.com/zahiar/terraform-provider-graylog/blob/master/graylog/resource/stream/resource.go)
+## Example Usage
+```hcl
+resource "graylog_stream" "test" {
+  title         = "test"
+  index_set_id  = data.graylog_index_set.default.id
+  disabled      = true
+  matching_type = "AND"
+  description   = "test"
+}
+```
 
 ## Argument Reference
 

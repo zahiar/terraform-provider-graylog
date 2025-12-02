@@ -1,7 +1,32 @@
 # Resource: graylog_role
 
-* [Example](https://github.com/zahiar/terraform-provider-graylog/blob/master/examples/v0.12/role.tf)
-* [Source Code](https://github.com/zahiar/terraform-provider-graylog/blob/master/graylog/resource/role/resource.go)
+## Example Usage
+```hcl
+resource "graylog_role" "read-stream-test" {
+  name        = "read-stream-test"
+  description = "read the stream 'test'"
+
+  permissions = [
+    "streams:read:${graylog_stream.test.id}"
+  ]
+}
+```
+```hcl
+resource "graylog_role" "terraform" {
+  name        = "terraform"
+  description = "terraform"
+
+  permissions = [
+    "dashboards:*",
+    "indexsets:*",
+    "inputs:*",
+    "roles:*",
+    "streams:*",
+    "users:*",
+    "pipeline_rule:*",
+  ]
+}
+```
 
 ## Argument Reference
 

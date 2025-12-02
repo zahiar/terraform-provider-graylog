@@ -1,7 +1,23 @@
 # Resource: graylog_alert_condition
 
-* [Example](https://github.com/zahiar/terraform-provider-graylog/blob/master/examples/v0.12/alert_condition.tf)
-* [Source Code](https://github.com/zahiar/terraform-provider-graylog/blob/master/graylog/resource/stream/alert/condition/resource.go)
+## Example Usage
+```hcl
+resource "graylog_alert_condition" "test" {
+  type      = "field_content_value"
+  stream_id = graylog_stream.test.id
+  in_grace  = false
+  title     = "test"
+
+  parameters = jsonencode({
+    field                = "message"
+    value                = "hoge hoge"
+    backlog              = 2
+    repeat_notifications = false
+    query                = "*"
+    grace                = 0
+  })
+}
+```
 
 ## Argument Reference
 
@@ -15,7 +31,7 @@
 
 `parameters` is a JSON string whose type is `object`.
 The data structure of JSON is different per AlertCondition `type`.
-Please see the [example](https://github.com/zahiar/terraform-provider-graylog/blob/master/examples/v0.12/alert_condition.tf).
+Please see the example above.
 
 ### Attributes Reference
 

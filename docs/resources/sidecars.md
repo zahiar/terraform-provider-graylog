@@ -1,34 +1,18 @@
 # Resource: graylog_sidecars
 
-* [Example](https://github.com/zahiar/terraform-provider-graylog/blob/master/examples/v0.12/sidecar.tf)
-* [Source Code](https://github.com/zahiar/terraform-provider-graylog/blob/master/graylog/resource/sidecar/resource.go)
-
 Manages to assign Sidecars's configuration to Sidecars.
 Due to the Graylog API's restriction, we have to manage all assignments by one Terraform resource,
-which means we shouldn't use this resource only once.
+which means we shouldn't use this resource more than once.
 
-Good
-
+## Example Usage
 ```hcl
-resource "graylog_sidecars" "all" {
+resource "graylog_sidecars" "all" { 
   sidecars {
-    # ...
-  }
-}
-```
-
-NG
-
-```hcl
-resource "graylog_sidecars" "foo" {
-  sidecars {
-    # ...
-  }
-}
-
-resource "graylog_sidecars" "bar" {
-  sidecars {
-    # ...
+    node_id = data.graylog_sidecar.test.id
+    assignments {
+      collector_id     = graylog_sidecar_collector.test.id
+      configuration_id = graylog_sidecar_configuration.test.id
+    }
   }
 }
 ```

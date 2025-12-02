@@ -1,7 +1,17 @@
 # Resource: graylog_share_entity
 
-* [Example](https://github.com/zahiar/terraform-provider-graylog/blob/master/examples/v0.12/share_entity.tf)
-* [Source Code](https://github.com/zahiar/terraform-provider-graylog/blob/master/graylog/resource/authz/shares/entities/resource.go)
+## Example Usage
+```hcl
+resource "graylog_share_entity" "example" {
+  entity_type = "stream"
+  entity_id   = graylog_stream.test.id
+  grant {
+    entity_type = "user"
+    entity_id   = graylog_user.test.id
+    right       = "view"
+  }
+}
+```
 
 Will update user permissions, don't mix both
 

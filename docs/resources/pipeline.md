@@ -1,7 +1,17 @@
 # Resource: graylog_pipeline
 
-* [Example](https://github.com/zahiar/terraform-provider-graylog/blob/master/examples/v0.12/pipeline.tf)
-* [Source Code](https://github.com/zahiar/terraform-provider-graylog/blob/master/graylog/resource/system/pipeline/pipeline/resource.go)
+## Example Usage
+```hcl
+resource "graylog_pipeline" "test" {
+  source = <<EOF
+pipeline "test"
+  stage 0 match either
+end
+EOF
+
+  description = "test"
+}
+```
 
 ## Argument Reference
 

@@ -1,7 +1,20 @@
 # Resource: graylog_pipeline_rule
 
-* [Example](https://github.com/zahiar/terraform-provider-graylog/blob/master/examples/v0.12/pipeline.tf)
-* [Source Code](https://github.com/zahiar/terraform-provider-graylog/blob/master/graylog/resource/system/pipeline/rule/resource.go)
+## Example Usage
+```hcl
+resource "graylog_pipeline_rule" "test" {
+  source = <<EOF
+rule "test"
+when
+    to_long($message.status) < 500
+then
+    set_field("status_01", 1);
+end
+EOF
+
+  description = "test"
+}
+```
 
 ## Argument Reference
 

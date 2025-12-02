@@ -1,7 +1,16 @@
 # Resource: graylog_sidecar_configuration
 
-* [Example](https://github.com/zahiar/terraform-provider-graylog/blob/master/examples/v0.12/sidecar_configuration.tf)
-* [Source Code](https://github.com/zahiar/terraform-provider-graylog/blob/master/graylog/resource/sidecar/configuration/resource.go)
+## Example Usage
+```hcl
+resource "graylog_sidecar_configuration" "test" {
+  name         = "foo"
+  color        = "#00796b"
+  collector_id = graylog_sidecar_collector.test.id
+  template     = <<EOF
+fields_under_root: true
+EOF
+}
+```
 
 ## Argument Reference
 

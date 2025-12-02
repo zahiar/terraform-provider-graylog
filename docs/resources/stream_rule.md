@@ -1,7 +1,16 @@
 # Resource: graylog_stream_rule
 
-* [Example](https://github.com/zahiar/terraform-provider-graylog/blob/master/examples/v0.12/stream_rule.tf)
-* [Source Code](https://github.com/zahiar/terraform-provider-graylog/blob/master/graylog/resource/stream/rule/resource.go)
+## Example Usage
+```hcl
+resource "graylog_stream_rule" "test" {
+  field       = "tag"
+  value       = "4"
+  stream_id   = graylog_stream.test.id
+  description = "test"
+  type        = 1
+  inverted    = false
+}
+```
 
 ## Argument Reference
 

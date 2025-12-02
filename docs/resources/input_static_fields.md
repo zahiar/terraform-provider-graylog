@@ -1,7 +1,27 @@
 # Resource: graylog_input_static_fields
 
-* [Example](https://github.com/zahiar/terraform-provider-graylog/blob/master/examples/v0.12/input.tf)
-* [Source Code](https://github.com/zahiar/terraform-provider-graylog/blob/master/graylog/resource/system/input/staticfield/resource.go)
+## Example Usage
+```hcl
+resource "graylog_input" "gelf_udp" {
+  title  = "gelf udp"
+  type   = "org.graylog2.inputs.gelf.udp.GELFUDPInput"
+  global = true
+
+  attributes = jsonencode({
+    bind_address          = "0.0.0.0"
+    port                  = 12201
+    recv_buffer_size      = 262144
+    decompress_size_limit = 8388608
+  })
+}
+
+resource "graylog_input_static_fields" "gelf_udp" {
+  input_id = graylog_input.gelf_udp.id
+  fields = {
+    foo = "bar"
+  }
+}
+```
 
 ## Argument Reference
 

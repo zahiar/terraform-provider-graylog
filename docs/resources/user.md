@@ -1,9 +1,34 @@
 # Resource: graylog_user
 
-* [Example](https://github.com/zahiar/terraform-provider-graylog/blob/master/examples/v0.12/user.tf)
-* [Source Code](https://github.com/zahiar/terraform-provider-graylog/blob/master/graylog/resource/user/resource.go)
-
 Please use `"v4"` version of API when using a graylog version >=4.1.
+
+## Example Usage
+For Graylog v3
+```hcl
+resource "graylog_user" "test" {
+  username  = "test"
+  email     = "test@example.com"
+  password  = "password"
+  full_name = "Test Test"
+  roles = [
+    "Reader",
+  ]
+}
+```
+
+For Graylog v4
+```hcl
+resource "graylog_user" "test" {
+  username   = "test"
+  email      = "test@example.com"
+  password   = "password"
+  first_name = "Test"
+  last_name  = "Test"
+  roles = [
+    "Reader",
+  ]
+}
+```
 
 ## Argument Reference
 

@@ -1,7 +1,52 @@
 # Resource: graylog_event_definition
 
-* [Example](https://github.com/zahiar/terraform-provider-graylog/blob/master/examples/v0.12/event_definition.tf)
-* [Source Code](https://github.com/zahiar/terraform-provider-graylog/blob/master/graylog/resource/event/definition/resource.go)
+## Example Usage
+```hcl
+resource "graylog_event_definition" "test" {
+  title       = "new-event-definition"
+  description = ""
+  priority    = 1
+  alert       = true
+
+  config = jsonencode({
+    type             = "aggregation-v1"
+    query            = "test"
+    query_parameters = []
+    streams = [
+      "${graylog_stream.test.id}"
+    ],
+    search_within_ms = 60000
+    execute_every_ms = 60000
+    group_by         = []
+    series           = []
+    conditions       = null
+  })
+
+  field_spec = jsonencode({
+    test = {
+      data_type = "string"
+      providers = [
+        {
+          type           = "template-v1"
+          template       = "test"
+          require_values = false
+        }
+      ]
+    }
+  })
+
+  key_spec = ["test"]
+
+  notification_settings {
+    grace_period_ms = 0
+    backlog_size    = 0
+  }
+
+  notifications {
+    notification_id = graylog_event_notification.http.id
+  }
+}
+```
 
 ## Argument Reference
 
@@ -21,7 +66,7 @@
 ### config
 
 The format of `config` depends on the Event Notification type.
-Please see the [example](https://github.com/zahiar/terraform-provider-graylog/blob/master/examples/v0.12/event_definition.tf).
+Please see the example above.
 Using the [Graylog's API browser](https://docs.graylog.org/en/3.1/pages/configuration/rest_api.html) you can check the format of `config`.
 
 ## Attribute Reference

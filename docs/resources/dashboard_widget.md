@@ -1,7 +1,72 @@
 # Resource: graylog_dashboard_widget
 
-* [Example](https://github.com/zahiar/terraform-provider-graylog/blob/master/examples/v0.12/dashboard.tf)
-* [Source Code](https://github.com/zahiar/terraform-provider-graylog/blob/master/graylog/resource/dashboard/widget/resource.go)
+## Example Usage
+```hcl
+resource "graylog_dashboard_widget" "test" {
+  description = "Stream search result count change"
+  dashboard_id = graylog_dashboard.test.id
+  type         = "STREAM_SEARCH_RESULT_COUNT"
+  cache_time   = 10
+  config = jsonencode({
+    timerange = {
+      type  = "relative"
+      range = 400
+    }
+    lower_is_better = true
+    trend           = true
+    stream_id       = graylog_stream.test.id
+    query           = ""
+  })
+}
+```
+```hcl
+resource "graylog_dashboard_widget" "test2" {
+  description  = "Quick values"
+  dashboard_id = graylog_dashboard.test.id
+  type         = "QUICKVALUES"
+  cache_time   = 10
+
+  config = jsonencode({
+    timerange = {
+      type  = "relative"
+      range = 300
+    }
+    stream_id        = graylog_stream.test.id
+    query            = ""
+    field            = "status"
+    show_data_table  = true
+    show_pie_chart   = true
+    limit            = 5
+    sort_order       = "desc"
+    data_table_limit = 60
+  })
+}
+```
+```hcl
+resource "graylog_dashboard_widget" "stacked_chart" {
+  description  = "stacked chart"
+  dashboard_id = graylog_dashboard.test.id
+  type         = "STACKED_CHART"
+  cache_time   = 10
+
+  config = jsonencode({
+    interval = "hour"
+    timerange = {
+      type  = "relative"
+      range = 86400
+    },
+    renderer      = "bar"
+    interpolation = "linear"
+    series = [
+      {
+        query                = ""
+        field                = "AccessMask"
+        statistical_function = "count"
+      }
+    ]
+  })
+}
+```
 
 ## Argument Reference
 

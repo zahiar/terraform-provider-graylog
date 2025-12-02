@@ -1,7 +1,12 @@
 # Resource: graylog_pipeline_connection
 
-* [Example](https://github.com/zahiar/terraform-provider-graylog/blob/master/examples/v0.12/pipeline.tf)
-* [Source Code](https://github.com/zahiar/terraform-provider-graylog/blob/master/graylog/resource/system/pipeline/connection/resource.go)
+## Example Usage
+```hcl
+resource "graylog_pipeline_connection" "test" {
+  stream_id    = graylog_stream.test.id
+  pipeline_ids = [graylog_pipeline.test.id]
+}
+```
 
 ## Argument Reference
 
