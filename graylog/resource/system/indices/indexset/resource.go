@@ -82,11 +82,21 @@ func Resource() *schema.Resource {
 				Type:     schema.TypeBool,
 				Optional: true,
 			},
+			"data_tiering": {
+				Type:             schema.TypeString,
+				Optional:         true,
+				DiffSuppressFunc: util.SchemaDiffSuppressJSONString,
+				ValidateFunc:     util.ValidateIsJSON,
+			},
 			"writable": {
 				Type:     schema.TypeBool,
 				Optional: true,
 			},
 			"default": {
+				Type:     schema.TypeBool,
+				Optional: true,
+			},
+			"use_legacy_rotation": {
 				Type:     schema.TypeBool,
 				Optional: true,
 			},

@@ -1,6 +1,7 @@
 package client
 
 import (
+	"crypto/tls"
 	"net/http"
 
 	authzSharesEntities "github.com/zahiar/terraform-provider-graylog/graylog/client/authz/shares/entities"
@@ -71,6 +72,14 @@ func New(m interface{}) (Client, error) {
 	cfg := m.(config.Config)
 
 	httpClient := httpclient.New(cfg.Endpoint)
+	if cfg.Insecure {
+		tr := http.DefaultTransport.(*http.Transport).Clone()
+		if tr.TLSClientConfig == nil {
+			tr.TLSClientConfig = &tls.Config{}
+		}
+		tr.TLSClientConfig.InsecureSkipVerify = true
+		httpClient.HTTPClient = &http.Client{Transport: tr}
+	}
 	xRequestedBy := cfg.XRequestedBy
 	if xRequestedBy == "" {
 		xRequestedBy = "terraform-provider-graylog"

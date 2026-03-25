@@ -23,7 +23,15 @@ func create(d *schema.ResourceData, m interface{}) error {
 	disabled := data[keyDisabled].(bool)
 	delete(data, keyDisabled)
 
-	stream, _, err := cl.Stream.Create(ctx, data)
+	payload := data
+	if cl.APIVersion == "v7" {
+		payload = map[string]interface{}{
+			"entity":        data,
+			"share_request": map[string]interface{}{},
+		}
+	}
+
+	stream, _, err := cl.Stream.Create(ctx, payload)
 	if err != nil {
 		return fmt.Errorf("failed to create a stream: %w", err)
 	}

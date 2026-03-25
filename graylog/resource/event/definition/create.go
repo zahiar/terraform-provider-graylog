@@ -20,7 +20,14 @@ func create(d *schema.ResourceData, m interface{}) error {
 		return err
 	}
 
-	ds, _, err := cl.EventDefinition.Create(ctx, data)
+	payload := data
+	if cl.APIVersion == "v7" {
+		payload = map[string]interface{}{
+			"entity": data,
+		}
+	}
+
+	ds, _, err := cl.EventDefinition.Create(ctx, payload)
 	if err != nil {
 		return fmt.Errorf("failed to create an event definition: %w", err)
 	}

@@ -1,6 +1,9 @@
 package provider
 
 import (
+	"os"
+	"strconv"
+
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 
 	"github.com/zahiar/terraform-provider-graylog/graylog/config"
@@ -13,6 +16,7 @@ func Configure(d *schema.ResourceData) (interface{}, error) {
 		AuthPassword: d.Get("auth_password").(string),
 		XRequestedBy: d.Get("x_requested_by").(string),
 		APIVersion:   d.Get("api_version").(string),
+		Insecure:     d.Get("insecure").(bool),
 	}
 
 	if err := cfg.LoadAndValidate(); err != nil {
@@ -55,6 +59,19 @@ func SchemaMap() map[string]*schema.Schema {
 			DefaultFunc: schema.MultiEnvDefaultFunc([]string{
 				"GRAYLOG_API_VERSION",
 			}, "v3"),
+		},
+		"insecure": {
+			Type:     schema.TypeBool,
+			Optional: true,
+			DefaultFunc: func() (interface{}, error) {
+				if v := os.Getenv("GRAYLOG_INSECURE"); v != "" {
+					b, err := strconv.ParseBool(v)
+					if err == nil {
+						return b, nil
+					}
+				}
+				return false, nil
+			},
 		},
 	}
 }

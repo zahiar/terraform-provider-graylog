@@ -20,6 +20,13 @@ func update(d *schema.ResourceData, m interface{}) error {
 		return err
 	}
 	delete(data, keyDefault)
+
+	if cl.APIVersion != "v7" {
+		delete(data, "use_legacy_rotation")
+	} else {
+		data["id"] = d.Id()
+	}
+
 	if _, _, err := cl.IndexSet.Update(ctx, d.Id(), data); err != nil {
 		return fmt.Errorf("failed to update a index set %s: %w", d.Id(), err)
 	}

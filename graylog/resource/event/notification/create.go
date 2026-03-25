@@ -20,7 +20,15 @@ func create(d *schema.ResourceData, m interface{}) error {
 		return err
 	}
 
-	ds, _, err := cl.EventNotification.Create(ctx, data)
+	payload := data
+	if cl.APIVersion == "v7" {
+		payload = map[string]interface{}{
+			"entity":        data,
+			"share_request": map[string]interface{}{},
+		}
+	}
+
+	ds, _, err := cl.EventNotification.Create(ctx, payload)
 	if err != nil {
 		return fmt.Errorf("failed to create an event notification: %w", err)
 	}

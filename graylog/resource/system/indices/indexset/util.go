@@ -10,6 +10,7 @@ const (
 	keyID                = "id"
 	keyRotationStrategy  = "rotation_strategy"
 	keyRetentionStrategy = "retention_strategy"
+	keyDataTiering       = "data_tiering"
 	keyDefault           = "default"
 )
 
@@ -18,7 +19,7 @@ func getDataFromResourceData(d *schema.ResourceData) (map[string]interface{}, er
 	if err != nil {
 		return nil, err
 	}
-	if err := convert.JSONToData(data, keyRotationStrategy, keyRetentionStrategy); err != nil {
+	if err := convert.JSONToData(data, keyRotationStrategy, keyRetentionStrategy, keyDataTiering); err != nil {
 		return nil, err
 	}
 
@@ -26,7 +27,7 @@ func getDataFromResourceData(d *schema.ResourceData) (map[string]interface{}, er
 }
 
 func setDataToResourceData(d *schema.ResourceData, data map[string]interface{}) error {
-	if err := convert.DataToJSON(data, keyRotationStrategy, keyRetentionStrategy); err != nil {
+	if err := convert.DataToJSON(data, keyRotationStrategy, keyRetentionStrategy, keyDataTiering); err != nil {
 		return err
 	}
 
