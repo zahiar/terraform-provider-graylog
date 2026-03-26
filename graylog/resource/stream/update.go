@@ -25,7 +25,15 @@ func update(d *schema.ResourceData, m interface{}) error {
 	delete(data, keyCreatorUserID)
 	delete(data, keyCreatedAt)
 
-	if _, _, err := cl.Stream.Update(ctx, d.Id(), data); err != nil {
+	payload := data
+	if cl.APIVersion == "v7" {
+		payload = map[string]interface{}{
+			"entity":        data,
+			"share_request": map[string]interface{}{},
+		}
+	}
+
+	if _, _, err := cl.Stream.Update(ctx, d.Id(), payload); err != nil {
 		return fmt.Errorf("failed to update a stream %s: %w", d.Id(), err)
 	}
 

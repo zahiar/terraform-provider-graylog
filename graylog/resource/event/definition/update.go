@@ -20,6 +20,7 @@ func update(d *schema.ResourceData, m interface{}) error {
 		return err
 	}
 	data[keyID] = d.Id()
+
 	if _, _, err := cl.EventDefinition.Update(ctx, d.Id(), data); err != nil {
 		return fmt.Errorf("failed to update a event definition %s: %w", d.Id(), err)
 	}

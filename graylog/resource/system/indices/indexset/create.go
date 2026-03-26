@@ -21,6 +21,10 @@ func create(d *schema.ResourceData, m interface{}) error {
 	}
 	delete(data, keyDefault)
 
+	if cl.APIVersion != "v7" {
+		delete(data, "use_legacy_rotation")
+	}
+
 	is, _, err := cl.IndexSet.Create(ctx, data)
 	if err != nil {
 		return fmt.Errorf("failed to create a index set: %w", err)

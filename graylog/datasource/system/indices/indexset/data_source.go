@@ -68,11 +68,19 @@ func DataSource() *schema.Resource {
 				Type:     schema.TypeBool,
 				Computed: true,
 			},
+			"data_tiering": {
+				Type:     schema.TypeString,
+				Computed: true,
+			},
 			"writable": {
 				Type:     schema.TypeBool,
 				Computed: true,
 			},
 			"default": {
+				Type:     schema.TypeBool,
+				Computed: true,
+			},
+			"use_legacy_rotation": {
 				Type:     schema.TypeBool,
 				Computed: true,
 			},

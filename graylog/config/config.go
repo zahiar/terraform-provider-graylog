@@ -7,6 +7,7 @@ type Config struct {
 	AuthPassword string
 	XRequestedBy string
 	APIVersion   string
+	Insecure     bool
 }
 
 func (Config) LoadAndValidate() error {
